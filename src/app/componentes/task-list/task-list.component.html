@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Lista de tareas</h1>
+        <div class="formulario">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>todo</th>
+                        <th>completed</th>
+                        <th>user id</th>
+                        <th>complete task</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of taskList">
+                        <th>{{item.id}}</th>
+                        <th>{{item.todo}}</th>
+                        <th>{{item.completed}}</th>
+                        <th>{{item.userId}}</th>
+                        <th><button class="btn btn-success" (click)="completeTask(item)">Complete</button></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center" *ngIf="todosLength === null">
+                No hay elementos en la lista
+            </div>
+            <mat-paginator (page)="handlePageEvent($event)" [length]="todosLength" [pageSize]="5"
+                [showFirstLastButtons]="showFirstLastButtons"
+                [pageIndex]="pageIndex" aria-label="Select page">
+            </mat-paginator>
+        </div>
+
+    </div>
+</div>
